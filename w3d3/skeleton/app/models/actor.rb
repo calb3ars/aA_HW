@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: actors
+#
+#  id   :integer          not null, primary key
+#  name :string           not null
+#
+
 class Actor < ActiveRecord::Base
 	has_many :castings
 	has_many :movies, through: :castings
