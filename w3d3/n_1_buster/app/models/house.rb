@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: houses
+#
+#  id      :integer          not null, primary key
+#  address :string
+#
+
 class House < ActiveRecord::Base
   has_many(
     :gardeners,
@@ -23,6 +31,14 @@ class House < ActiveRecord::Base
   end
 
   def better_seeds_query
-    # TODO: your code here
+    plants = self.plants.includes(:species)
+    seeds = []
+
+    plants.each do |plant|
+      byebug
+      seeds << plant.species
+    end
+
+    seeds
   end
 end
